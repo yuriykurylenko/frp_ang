@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app="userForm">
+<head>
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+        input.error {
+            border: 1px solid red;
+            color: red;
+        }
+        span.error {
+            color: red;
+        }
+        span.success {
+            color: green;
+        }
+
+        #loader {
+            color: gray
+        }
+    </style>
+</head>
+<body>
+    <div class="well span5" ng-controller="userFormCtrl">
+        <div>
+            <input type="text" id="username" ng-model="username" placeholder="Username" />
+            <span id="availability" class="{{ availabilityCSSClass(username) }}">{{ availabilityText(username) }}</span>
+        </div>
+        <div>
+            <input type="password" id="password" ng-model="password" placeholder="Password" />
+            <span id="strength" class="{{ passStrengthCSSClass(password) }}">{{ passStrengthText(password) }}</span>
+        </div>
+        <div>
+            <button id="button" class="btn {{ btnDisabled(username, password) }}">Register</button>
+            <span id="loader">Sending...</span>
+        </div>
+        <br/>
+        <p id="message" class="text-success">
+            You have successfully registered!
+        </p>
+    </div>
+
+    <!-- external libraries from CDN -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+    <!-- /external libraries -->
+
+    <!-- app-related scripts -->
+    <script src="app.js"></script>
+    <!-- /app-related scripts -->            
+</body>
+</html>
