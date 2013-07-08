@@ -3,7 +3,9 @@
 var userForm = angular.module('userForm', []);
 
 userForm.controller('userFormCtrl', ['$scope', function($scope) {
-    $scope.passStrength = true;
+    $scope.pending = false;
+    $scope.registered = false;
+
 
     var available = function(username) {
         return (username || '').length > 4;
@@ -31,5 +33,24 @@ userForm.controller('userFormCtrl', ['$scope', function($scope) {
 
     $scope.btnDisabled = function(username, pass) {
         return (!available(username) || !strong(pass)) ? 'disabled' : '';   
+    }
+
+    $scope.requestStatus = function() {
+        return !$scope.pending ? 'hidden' : '';   
+    }
+
+    $scope.registrationStatus = function() {
+        return !$scope.registered ? 'hidden' : '';   
+    }
+
+    $scope.send = function() {
+        $scope.pending = true;
+
+        setTimeout(function() {
+            $scope.$apply(function () {
+                $scope.pending = false;
+                $scope.registered = true;
+            });
+        }, 1000);
     }
 }]);

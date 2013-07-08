@@ -14,6 +14,10 @@
             color: green;
         }
 
+        .hidden {
+            display: none;
+        }
+
         #loader {
             color: gray
         }
@@ -30,11 +34,11 @@
             <span id="strength" class="{{ passStrengthCSSClass(password) }}">{{ passStrengthText(password) }}</span>
         </div>
         <div>
-            <button id="button" class="btn {{ btnDisabled(username, password) }}">Register</button>
-            <span id="loader">Sending...</span>
+            <button id="button" class="btn {{ btnDisabled(username, password) }}" ng-click="send(username, password)">Register</button>
+            <span id="loader" class="{{ requestStatus() }}">Sending...</span>
         </div>
         <br/>
-        <p id="message" class="text-success">
+        <p id="message" class="text-success {{ registrationStatus() }}">
             You have successfully registered!
         </p>
     </div>
