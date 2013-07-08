@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="userForm">
+<html>
 <head>
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
     <style>
@@ -27,18 +27,18 @@
     <div class="well span5" ng-controller="userFormCtrl">
         <div>
             <input type="text" id="username" ng-model="username" placeholder="Username" />
-            <span id="availability" class="{{ availabilityCSSClass(username) }}">{{ availabilityText(username) }}</span>
+            <span id="availability"></span>
         </div>
         <div>
             <input type="password" id="password" ng-model="password" placeholder="Password" />
-            <span id="strength" class="{{ passStrengthCSSClass(password) }}">{{ passStrengthText(password) }}</span>
+            <span id="strength"></span>
         </div>
         <div>
-            <button id="button" class="btn {{ btnDisabled(username, password) }}" ng-click="send(username, password)">Register</button>
-            <span id="loader" class="{{ requestStatus() }}">Sending...</span>
+            <button id="button" class="btn" disabled>Register</button>
+            <span id="loader" class="hidden">Sending...</span>
         </div>
         <br/>
-        <p id="message" class="text-success {{ registrationStatus() }}">
+        <p id="message" class="text-success hidden">
             You have successfully registered!
         </p>
     </div>
@@ -46,7 +46,6 @@
     <!-- external libraries from CDN -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
     <!-- /external libraries -->
 
     <!-- app-related scripts -->
